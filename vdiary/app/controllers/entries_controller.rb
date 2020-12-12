@@ -21,7 +21,17 @@ class EntriesController < ApplicationController
 
   # GET: /entries/5
   get "/entries/:id" do
-    erb :"/entries/show.html"
+    if logged_in?
+      @user = current_user
+      @entry = Entry.find(params[:id].to_i)
+      if @entry.user == @user
+        erb :"/entries/show.html"
+      else
+        redirect to "/portal"
+      end
+    else
+      redirect to "/"
+    end
   end
 
   # GET: /entries/5/edit
