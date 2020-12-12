@@ -1,5 +1,29 @@
 class UsersController < ApplicationController
 
+#* ++++++++++++++++++++++++ LOG IN +++++++++++++++++++++++++++++
+get "/login" do
+  erb :"/users/login.html"
+end
+
+post "/login" do
+  # IF PARAMETERS ARE NOT BLANK & USER.NAME EXISTS IN DATABASE & PASSWORD MATCHES THROUGH AUTHENTICATION - "LOG IN" USER'S ID VIA SESSION
+  if !params[:user][:name].blank? && !params[:user][:password].blank?
+    user = User.find_by(:name => params[:user][:name])
+    if user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+            @user = user
+      redirect to "/portal"
+    else
+      flash[:error] = "INVALID CREDENTIALS"
+      redirect to "/login"
+    end
+  else
+    flash[:error] = "BLANK FIELDS ARE INVALID"
+    redirect to "/login"
+  end
+end
+#* ++++++++++++++++++++++++ LOG IN +++++++++++++++++++++++++++++
+
   # GET: /users
   get "/users" do
     erb :"/users/index.html"
