@@ -36,7 +36,26 @@ class EntriesController < ApplicationController
 
   # GET: /entries/5/edit
   get "/entries/:id/edit" do
-    erb :"/entries/edit.html"
+    # if logged_in?
+    # @user = current_user
+    # @entry = Entry.find(params[:id])
+    #     if @entry.user == @user
+    #       erb :"/entries/edit.html"
+    #     else
+    #       "not your entry"
+    #     end
+    # else
+    #   "not logged in"
+    # end
+    if logged_in?
+      if is_authorized?
+        erb :"/entries/edit.html"
+      else
+        "current user is not authorized to edit this entry - entry/user data mismatch"
+      end
+    else
+      "you are not logged in"
+    end
   end
 
   # PATCH: /entries/5
