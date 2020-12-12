@@ -111,8 +111,18 @@ end
   end
 
   # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
+  patch "/users/:id" do    
+    if logged_in?
+      @user = current_user
+      if @user.id == params[:id].to_i
+        @user.update(params[:user])
+        redirect to "/users/#{@user.id}"
+      else
+        flash[:error] = "users don't match"
+      end
+    else
+      flash[:error] = "not logged in"
+    end
   end
 
   # DELETE: /users/5/delete
