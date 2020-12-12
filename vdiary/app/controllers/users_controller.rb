@@ -81,7 +81,8 @@ end
   #   erb :"/users/show.html"
   # end
 
-  # GET: /users/5 USER SHOW PAGE
+  # USER SHOW PAGE
+  # GET: /users/5
   get "/users/:id" do
     if logged_in?
       @user = current_user
@@ -97,9 +98,16 @@ end
     end
   end
 
+  # USER EDIT PAGE
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    erb :"/users/edit.html"
+      if logged_in?
+        @user = current_user
+        erb :"/users/edit.html"
+      else
+        "cannot edit user - not logged in"
+        redirect to "/"
+      end    
   end
 
   # PATCH: /users/5
