@@ -1,8 +1,14 @@
 class EntriesController < ApplicationController
 
-  # GET: /entries 
+  # GET: /entries
   get "/entries" do
+    if logged_in?
+    @user = current_user
+    @entries = @user.entries
     erb :"/entries/index.html"
+    else
+      redirect to "/"
+    end
   end
 
   # GET: /entries/new
