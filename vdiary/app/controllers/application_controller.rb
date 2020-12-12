@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
     # ▲ VIEW TEMPLATES directory
     enable :sessions
     # ▲ insert RACK::SESSION::COOKIE component - ENABLE COOKIE BASED SESSION
-    set :session_secret, "this is a secret that needs to be changed"
+    set :session_secret, ENV['SECRET']
     # ▲ KEY used for ENCRYPTING COOKIEES to maintain session state- MUST be strong
     register Sinatra::Flash
     # ▲ enable FLASH MESSAGES - flash{hash}
