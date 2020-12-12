@@ -12,7 +12,35 @@
 <%# =================================================================HEADend %>
 <%# ====================================================================BODY %>
   <body>
+
+        <%# =================================REQUIRED : USER LOGGED IN %>
+        <%# DISPLAY NAVIGATION - APPLICATION CONTROLLER HELPER METHODS USE - IF SESSION.USER_ID EXISTS -  %>
+            <% if logged_in? && request.path_info != "/login" && request.path_info != "/signup" && request.path_info != "/" %>
+            <% @user = current_user %>
+
+                
+            <nav>
+                <ul>
+                  <li style="float: left;">VDIARY<li>
+                  <li><a href="/logout">-Log Out-</a></li>
+                  <li><a href="/users/<%=@user.id%>">-Account-</a></li>
+                  <li><a href="/entries">-Entries-</a></li>
+                  <li><a href="/portal">-Portal-</a></li>
+                  <br>
+                </ul>
+            </nav>
+
+            <div style="text-align: center;">
+              <br>
+              Welcome, <%=@user.name.capitalize%>!
+            </div>
+                
+            <% end %>
+        <%# =========================================NAVBARend===== %>
+
+        <%# ▼ INSERT CODE FROM EVERYWHERE ELSE - THE 'MEAT' OF THE APP %>
         <%= yield %>
+
   </body>
 <%# =================================================================BODYend %>
 </html>
