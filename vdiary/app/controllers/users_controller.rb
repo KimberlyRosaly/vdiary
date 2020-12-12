@@ -139,6 +139,46 @@ end
     end
   end
 
+  patch "/users/:id/password" do
+    @user = User.find(params[:id])
+    if logged_in? && current_user.id == @user.id
+      # if all 3 password fields are not blank
+      if !params[:current_password].blank? && !params[:new_password].blank? && !params[:new_password_confirmation].blank? && @user.authenticate(params[:current_password]) && params[:new_password] == params[:new_password_confirmation]
+        #check to see if CP is correct          
+        #check to see if NP & NPC are identical
+        #patch through the new password
+        @user.update(:password => params[:new_password])
+        #save the user
+        @user.save
+        #USER FEEDBACK - for success
+        flash[:error] = "USER PASSWORD CHANGED SUCCESSFULLY"
+        redirect to "/users/#{@user.id}"
+
+      #if any inputs are blank
+      elsif params[:current_password].blank? || params[:new_password].blank? || params[:new_password_confirmation].blank?
+        #error CANNOT BE BLANK
+        flash[:error] = "PASSWORD FIELDS CANNOT BE BLANK"
+        redirect to "/users/#{@user.id}/change-password"
+
+      #if CP is incorrect
+      elsif !@user.authenticate(params[:current_password])
+        #error WRONG CP
+        flash[:error] = "CURRENT PASSWORD INVALID"
+        redirect to "/users/#{@user.id}/change-password"
+
+      #if NP & NPC aren't identical
+      elsif params[:new_password] != params[:new_password_confirmation]
+        #error NEW PASSWORD MISMATCH
+        flash[:error] = "NEW PASSWORD MISMATCH"
+        redirect to "/users/#{@user.id}/change-password"
+      end
+    else
+      flash[:error] = "Error patching account password - not logged in / user mismatch"
+      redirect to "/"
+    end
+  end
+#? ++++++++++++++++++++++++ CHANGE PASSWORD +++++++++++++++++++++++++++++
+
   # REPLACED WITH SIGN UP
   #  # GET: /users/new
   # get "/users/new" do
