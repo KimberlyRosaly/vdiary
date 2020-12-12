@@ -66,24 +66,35 @@ get "/portal" do
 end
 #* ++++++++++++++++ USER WELCOME DIRECTORY +++++++++++++++++++++
 
-  # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
-  end
+  #  # GET: /users/new
+  # get "/users/new" do
+  #   erb :"/users/new.html"
+  # end
 
-  # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
-  end
+  # # POST: /users
+  # post "/users" do
+  #   redirect "/users"
+  # end
 
-  # POST: /users
-  post "/users" do
-    redirect "/users"
-  end
+  # # GET: /users/5
+  # get "/users/:id" do
+  #   erb :"/users/show.html"
+  # end
 
-  # GET: /users/5
+  # GET: /users/5 USER SHOW PAGE
   get "/users/:id" do
-    erb :"/users/show.html"
+    if logged_in?
+      @user = current_user
+      if @user.id == params[:id].to_i
+            erb :"/users/show.html"
+      else
+            "user data mismatch"
+            # redirect to "/portal"
+      end
+    else
+          "not logged in"
+          # redirect to "/"
+    end
   end
 
   # GET: /users/5/edit
