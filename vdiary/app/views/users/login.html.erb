@@ -1,0 +1,84 @@
+<%# BACKGROUND COLOR FULL PAGE %>
+<div class="hero is-fullheight is-primary"> 
+
+<%# ===================================================== %>
+ <%# FEEDBACK MESSAGES I WANT TO PROVIDE TO MY USER %>
+  <% if flash[:error] %>
+      <div class="notification is-danger">
+          <%= flash[:error] %>
+      </div>
+  <% end %>
+<%# ===================================================== %>
+
+  <div class="hero-body">
+
+    <div class="container has-text-centered">
+
+      <div class="column is-8 is-offset-2">
+
+        <h3 class="title">
+          LOG IN</h3>
+        <h4 class="subtitle">
+        Enter your credentials here to sign into your account.</h4>
+
+<%# =====================================================FORM %>
+<form action="/login" method="POST">
+
+                <div class="field is-horizontal">
+                  <label class="field-label">
+                    USERNAME
+                  </label>
+
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control has-icons-left">
+                        <input class="input" type="text" name="user[name]" placeholder="">
+                        <span class="icon is-left">
+                          <%# ICON - PLUG INTO FONTAWESOME SCRIPT %>
+                          <i class="fas fa-user-astronaut"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="field is-horizontal">
+                  <label class="field-label">
+                    PASSWORD
+                  </label>
+
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control has-icons-left">
+                        <input class="input" type="password" name="user[password]" placeholder="">
+                        <span class="icon is-left">
+                          <%# ICON - PLUG INTO FONTAWESOME SCRIPT %>
+                          <i class="fas fa-key"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="control">
+                  <input class="button is-primary is-light" type="submit" value="PRESS 2 SUBMIT">
+                </div>
+                
+                
+
+</form>
+<%# ===================================================== %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        
+
+
+
+
+
