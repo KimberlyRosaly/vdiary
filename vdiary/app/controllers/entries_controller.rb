@@ -12,7 +12,11 @@ class EntriesController < ApplicationController
 
   # POST: /entries
   post "/entries" do
-    redirect "/entries"
+    @user = current_user
+    @entry = Entry.create(params[:entry])
+    @entry.user_id = @user.id
+    @entry.save
+    redirect to "/entries/#{@entry.id}"
   end
 
   # GET: /entries/5
