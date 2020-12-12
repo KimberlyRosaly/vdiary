@@ -1,1 +1,19 @@
-<h1>This is the Model's index page.</h1>
+
+<% if @entries.length > 0 %>
+    <% @entries.each do |e| %>
+        <br>
+        <%# CONVERT UTC 'COORDINATED UNIVERSAL TIME' TO COMPUTER's LOCAL TIME - FORMAT STRING %>
+        <%= "DATE: #{e.created_at.localtime.strftime("%A, %B %e, %Y")}" %>
+        <%= "TIME: #{e.created_at.localtime.strftime("%l:%M%p")}"%><br>
+        <%= "MESSAGE: #{e.message}" %><br>
+        <a href="/entries/<%=e.id%>/edit">edit</a>
+        <br>
+    <% end %>
+<% else %>
+    <br>
+    
+    <%= "No saved entries found. ಥ﹏ಥ" %>
+    <br>
+    <a href="/entries/new">Create a new entry here</a>
+<% end %>
+
