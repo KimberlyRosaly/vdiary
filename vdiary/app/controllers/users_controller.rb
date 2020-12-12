@@ -56,6 +56,15 @@ post "/signup" do
 end
 #* ++++++++++++++++++++++++ SIGN UP +++++++++++++++++++++++++++++
 
+#* ++++++++++++++++ USER WELCOME DIRECTORY +++++++++++++++++++++
+get "/portal" do  
+  if @user = current_user
+    erb :"/portal"
+  else
+    redirect to "/"
+  end
+end
+#* ++++++++++++++++ USER WELCOME DIRECTORY +++++++++++++++++++++
 
   # GET: /users
   get "/users" do
