@@ -60,7 +60,12 @@ class EntriesController < ApplicationController
 
   # PATCH: /entries/5
   patch "/entries/:id" do
-    redirect "/entries/:id"
+    if is_authorized?
+      @entry.update(params[:entry])
+      redirect to "/entries/#{@entry.id}"
+    else
+      "erorr patching entry - user is not authorized"
+    end
   end
 
   # DELETE: /entries/5/delete
