@@ -66,20 +66,7 @@ get "/portal" do
 end
 #* ++++++++++++++++ USER WELCOME DIRECTORY +++++++++++++++++++++
 
-  #  # GET: /users/new
-  # get "/users/new" do
-  #   erb :"/users/new.html"
-  # end
-
-  # # POST: /users
-  # post "/users" do
-  #   redirect "/users"
-  # end
-
-  # # GET: /users/5
-  # get "/users/:id" do
-  #   erb :"/users/show.html"
-  # end
+ 
 
   # USER SHOW PAGE
   # GET: /users/5
@@ -141,4 +128,26 @@ end
     end
   end
 
+  #? ++++++++++++++++++++++++ CHANGE PASSWORD +++++++++++++++++++++++++++++
+  get "/users/:id/change-password" do
+    @user = User.find(params[:id])
+    if logged_in? && current_user.id == @user.id
+      erb :"/users/change_password.html"
+    else
+      flash[:error] = "Not logged in / user mismatch"
+      redirect to "/"
+    end
+  end
+
+  # REPLACED WITH SIGN UP
+  #  # GET: /users/new
+  # get "/users/new" do
+  #   erb :"/users/new.html"
+  # end
+
+  # # POST: /users
+  # post "/users" do
+  #   redirect "/users"
+  # end
+  
 end # CONTROLLERend
