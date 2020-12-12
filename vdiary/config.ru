@@ -6,4 +6,3 @@ end
 
 run ApplicationController
 use EntriesController
-use EntRiesController
