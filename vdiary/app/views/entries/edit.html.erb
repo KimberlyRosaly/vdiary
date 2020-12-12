@@ -1,1 +1,19 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<br>
+<form action="/entries/<%=@entry.id%>" method="post">
+<input type="hidden" value="patch" name="_method">
+
+        
+        <%= "DATE: #{@entry.created_at.localtime.strftime("%A, %B %d, %Y")}" %>
+        <%= "TIME: #{@entry.created_at.localtime.strftime("%l:%M%p")}"%><br>        
+
+        MESSAGE:<br>
+        <textarea name="entry[message]" rows="2" cols="50"><%=@entry.message%></textarea>
+
+        <input type="submit" value="submit changes">
+
+</form>
+        <br>
+<form onsubmit="return confirm('CONFIRMATION: permanently destroy this entry?')" action="/entries/<%=@entry.id%>/delete" method="POST">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="destroy entry">
+</form>
