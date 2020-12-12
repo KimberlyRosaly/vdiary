@@ -1,1 +1,26 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<%# ===================================================== %>
+ <%# FEEDBACK MESSAGES I WANT TO PROVIDE TO MY USER %>
+  <% if flash[:message] %>
+      <div class="notification is-danger">
+          <%= flash[:message] %>
+      </div>
+  <% end %>
+<%# ===================================================== %>
+
+<%= "DIARY ENTRY NUMBER : #{@entry.id}" %><br>
+
+<%= "DATE: #{@entry.created_at.localtime.strftime("%A, %B %e, %Y")}" %><br>
+<%= "TIME: #{@entry.created_at.localtime.strftime("%l:%M%p")}"%><br>
+
+<%# TO ESCAPE ERB TAGS AND INDICATE WANTING THE LITERAL STRING '<%%' %>
+<%=% " %><%= "#{@entry.message}" %><%=% " %>
+
+<br>
+
+<a href="/entries/<%=@entry.id%>/edit">edit</a><br>
+
+
+<form onsubmit="return confirm('CONFIRMATION: permanently destroy entry?')" action="/entries/<%=@entry.id%>/delete" method="POST">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="DESTROY ENTRY">
+</form>
