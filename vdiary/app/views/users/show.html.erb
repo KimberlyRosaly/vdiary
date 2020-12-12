@@ -1,1 +1,20 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+ <%# FEEDBACK MESSAGES I WANT TO PROVIDE TO MY USER %>
+  <% if flash[:error] %>
+      <div class="notification is-danger">
+          <%= flash[:error] %>
+      </div>
+  <% end %>
+<%# ===================================================== %>
+
+USER ACCOUNT NAME : <%=@user.name%>
+<br>
+    <a href="/users/<%=@user.id%>/edit">
+    edit your account details
+    </a>
+
+<br>
+    <form onsubmit="return confirm('CONFIRMATION: permanently destroy your account?')" action="/users/<%=@user.id%>/delete" method="POST">
+        <input type="hidden" value="delete" name="_method">
+        <input type="submit" value="DESTROY ACCOUNT">
+    </form>
+
