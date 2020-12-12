@@ -1,1 +1,9 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<%@d = Date.current%>
+<%=@d.strftime("%B %e, %Y")%>
+
+<form action="/entries" method="POST">
+
+    <textarea name="entry[message]" rows="2" cols="50" placeholder="dear diary..."></textarea>
+
+    <input type="submit" value="save">
+</form>

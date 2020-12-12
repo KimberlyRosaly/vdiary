@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
 
-  # GET: /entries
+  # GET: /entries 
   get "/entries" do
     erb :"/entries/index.html"
   end
