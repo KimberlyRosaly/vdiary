@@ -70,6 +70,10 @@ class EntriesController < ApplicationController
 
   # DELETE: /entries/5/delete
   delete "/entries/:id/delete" do
-    redirect "/entries"
+    @entry = Entry.find(params[:id])
+    @entry.destroy
+  
+    redirect to "/entries"
   end
-end
+
+end #<---ENTRIEScontrollerEND
