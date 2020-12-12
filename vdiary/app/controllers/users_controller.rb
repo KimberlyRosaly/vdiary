@@ -125,8 +125,20 @@ end
     end
   end
 
+  # DESTROY ACCOUNT
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    redirect "/users"
+    if logged_in?
+      @user = current_user  
+      if @user.id == params[:id].to_i
+        @user.destroy
+      else
+            "user data does not match"
+          end
+          redirect to "/"
+    else
+      "you're not logged in"
+    end
   end
-end
+
+end # CONTROLLERend
