@@ -6,29 +6,82 @@
   <% end %>
 <%# ===================================================== %>
 
-<div class="title is-1 has-text-centered">
-S I G N   U P</div>
+<%# BACKGROUND COLOR FULL PAGE %>
+<div class="hero is-fullheight is-warning">
 
+<div class="hero-body">
+
+    <div class="container has-text-centered">
+
+      <div class="column is-8 is-offset-2">
+        
+
+        <h3 class="title">
+          SIGN UP!&#9998;</h3>
+        <h4 class="subtitle">
+          Define your credentials, here.
+        </h4>
+
+        <div class="subtitle">
+          <span class="icon">
+           <i class="fas fa-arrow-alt-circle-down" style="font-size: 30px;"></i>
+          </span>
+        </div>
+
+
+
+<%# =====================================================FORM %>
 <form action="/signup" method="POST">
-        <div class="field">
-        <label class="label">
-          USER NAME
-        </label>
-              <div class="control">
-                <input class="input" type="text" name="user[name]" placeholder="enter u s e r n a m e here">
-              </div>
-        </div>
 
-        <div class="field">
-        <label class="label">
-          PASSWORD
-        </label>
-              <div class="control">
-              <input class="input" type="password" name="user[password]" placeholder="enter p a s s w o r d here">
-              </div>
-        </div>
+                <div class="field is-horizontal">
+                  <label class="field-label">
+                    USER NAME
+                  </label>
 
-        <div class="control">
-          <input class="button is-primary" type="submit" value="PRESS 2 SUBMIT">
-        </div>
-  
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control has-icons-left">
+                        <input class="input" type="text" name="user[name]" placeholder="Jane Doe">
+                        <span class="icon is-left">
+                          <%# ICON - PLUG INTO FONTAWESOME SCRIPT %>
+                          <i class="fas fa-user-astronaut"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="field is-horizontal">
+                  <label class="field-label">
+                    PASSWORD
+                  </label>
+
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control has-icons-left">
+                        <input class="input" type="password" name="user[password]" placeholder="abc123secret">
+                        <span class="icon is-left">
+                          <%# ICON - PLUG INTO FONTAWESOME SCRIPT %>
+                          <i class="fas fa-key"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="control">
+                  <input class="button is-primary" type="submit" value="PRESS 2 SIGN UP!">
+                </div>
+                
+                
+
+</form>
+<%# ===================================================== %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> 
