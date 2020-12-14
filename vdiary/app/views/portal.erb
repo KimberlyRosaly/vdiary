@@ -1,12 +1,34 @@
 
-<a href="/entries/new">create a new diary entry</a>
 
-<br>
-<a href="/entries">view all of your saved diary entries</a>
+<div class="card has-background-light" style="margin: 50px; padding: 20px; text-shadow: 1px 1px 1px darkgrey;">
+  <div class="card-header-title is-centered">
+    <a class="title is-1 has-text-grey-lighter has-text-centered" style="font-family: courier;" href="/entries/new">
+    create a new diary entry</a>
+  </div>
 
-<br>
-<a href="/users/<%=@user.id%>">take a look at your account</a>
+  <div class="card-header-icon is-centered" style="font-size: 30px; text-shadow: 2px 1px 1px darkgrey;">
+    .- ..<i class="fas fa-pencil-alt" ></i>
+  </div>
+</div>
 
-<br><br>
-<a href="/logout">log out</a>
+<%# =============================================================== %>
+<footer>
+<div class="button has-text-centered">
+              <div class="block is-4 has-text-info-light" style="text-shadow: 1px 1px 1px darkgrey; letter-spacing: -0.5px;">
+                <a href="/entries">view all of your saved diary entries</a>
+              </div>
+</div>
+<div class="button has-text-centered">
+              <div class="block is-4 has-text-info-light" style="text-shadow: 1px 1px 1px darkgrey; letter-spacing: -0.5px;">
+                <a href="/users/<%=@user.id%>">take a look at your account</a>
+              </div>
+</div>
 
+<div class="button is-small has-text-centered" style="float: right;">
+              <div class="block is-4 has-text-info-light" style="text-shadow: 1px 1px 1px darkgrey; letter-spacing: -0.5px;">
+                <a class=href="/logout">log out</a>
+              </div>
+</div>
+</footer>
+
+<%# =============================================================== %>
