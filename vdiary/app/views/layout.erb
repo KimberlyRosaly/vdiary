@@ -15,20 +15,18 @@
 
     <%# TO USE FONTAWESOME ICONS %>
     <script src="https://kit.fontawesome.com/74c7444b36.js" crossorigin="anonymous"></script>
-    <title>Vdiary</title>
 
 <%# ============================================================================= %>
 
+    <title>Vdiary</title>
     <style>
-        nav {
-          background-color: lightgray;          
-        }    
-        nav ul li {
-          display: inline;
-          float: right;
-        }
-        nav ul li a {
-          padding: 14px;
+        html, body {
+          height: 100%;
+          
+          min-width: 100%;
+          overflow: hidden;
+                  
+          background-image: linear-gradient(to right, rgba(254, 205, 205, 0.9), rgba(202, 223, 134, 0.9));
         }
       </style>
 
@@ -40,23 +38,40 @@
         <%# =================================REQUIRED : USER LOGGED IN %>
         <%# DISPLAY NAVIGATION - APPLICATION CONTROLLER HELPER METHODS USE - IF SESSION.USER_ID EXISTS -  %>
             <% if logged_in? && request.path_info != "/login" && request.path_info != "/signup" && request.path_info != "/" %>
-            <% @user = current_user %>
+            <% @user = current_user %>          
 
-                
-            <nav>
-                <ul>
-                  <li style="float: left;">VDIARY<li>
-                  <li><a href="/logout">-Log Out-</a></li>
-                  <li><a href="/users/<%=@user.id%>">-Account-</a></li>
-                  <li><a href="/entries">-Entries-</a></li>
-                  <li><a href="/portal">-Portal-</a></li>
-                  <br>
-                </ul>
-            </nav>
 
-            <div style="text-align: center;">
-              <br>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+
+    <div class="navbar-item">
+      VDiARY&#10024;
+    </div>        
+    
+    <a class="navbar-item" href="/portal">
+      -Portal-
+    </a>
+    <a class="navbar-item" href="/entries">
+      -Entries-
+    </a>
+    <a class="navbar-item" href="/users/<%=@user.id%>">
+      -Account-
+    </a>
+  
+    <a class="navbar-item" href="/logout">
+      -Log Out-
+    </a>
+
+  </div>   
+     
+</nav>
+
+        
+
+            <div class="container has-text-centered">
+              <div class="title is-4 has-text-info-light" style="padding: 20px; text-shadow: 1px 1px 3px black; letter-spacing: 10px;">
               Welcome, <%=@user.name.capitalize%>!
+              </div>
             </div>
                 
             <% end %>
@@ -64,6 +79,7 @@
 
         <%# ▼ INSERT CODE FROM EVERYWHERE ELSE - THE 'MEAT' OF THE APP %>
         <%= yield %>
+        
 
   </body>
 <%# =================================================================BODYend %>
