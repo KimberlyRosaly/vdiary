@@ -7,21 +7,23 @@
   <% end %>
 <%# ===================================================== %>
 <div class="box" style="margin: 20px;">
-<%= "DIARY ENTRY NUMBER : #{@entry.id}" %><br>
 
-<%= "DATE: #{@entry.created_at.localtime.strftime("%A, %B %e, %Y")}" %><br>
-<%= "TIME: #{@entry.created_at.localtime.strftime("%l:%M%p")}"%><br>
+    <div class="has-text-centered">
+        <%= "DIARY ENTRY NUMBER : #{@entry.number}" %><br>
+    </div>
+        <%= "DATE: #{@entry.created_at.localtime.strftime("%A, %B %e, %Y")}" %><br>
+        <%= "TIME: #{@entry.created_at.localtime.strftime("%l:%M%p")}"%><br>
 
-<%# TO ESCAPE ERB TAGS AND INDICATE WANTING THE LITERAL STRING '<%%' %>
-<%=% " %><%= "#{@entry.message}" %><%=% " %>
+        <%# TO ESCAPE ERB TAGS AND INDICATE WANTING THE LITERAL STRING '<%%' %>
+        <%=% " %><%= "#{@entry.message}" %><%=% " %>
 
-<br>
+        <br>
 
-<a href="/entries/<%=@entry.id%>/edit">edit</a><br>
+        <a href="/entries/<%=@entry.id%>/edit">edit</a><br>
 
 
-<form onsubmit="return confirm('CONFIRMATION: permanently destroy entry?')" action="/entries/<%=@entry.id%>/delete" method="POST">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="DESTROY ENTRY">
-</form>
+        <form onsubmit="return confirm('CONFIRMATION: permanently destroy entry?')" action="/entries/<%=@entry.id%>/delete" method="POST">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="submit" value="DESTROY ENTRY">
+        </form>
 </div>

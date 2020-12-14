@@ -1,7 +1,11 @@
 <% if @entries.length > 0 %>
     <% @entries.each do |e| %>
 <div class="box" style="margin: 20px;">
-        <br>
+
+        <div class="has-text-centered">
+            <%= "DIARY ENTRY NUMBER : #{e.number}" %><br>
+        </div>
+        
         <%# CONVERT UTC 'COORDINATED UNIVERSAL TIME' TO COMPUTER's LOCAL TIME - FORMAT STRING %>
         <%= "DATE: #{e.created_at.localtime.strftime("%A, %B %e, %Y")}" %>
         <%= "TIME: #{e.created_at.localtime.strftime("%l:%M%p")}"%><br>

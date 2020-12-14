@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20201212042928) do
   create_table "entries", force: :cascade do |t|
     t.text     "message"
     t.integer  "user_id"
+    t.integer  "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20201212042928) do
   create_table "users", force: :cascade do |t|
     t.string   "password_digest"
     t.string   "name"
+    t.integer  "entry_counter"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
