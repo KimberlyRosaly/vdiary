@@ -1,5 +1,5 @@
 <%# BACKGROUND COLOR FULL PAGE %>
-<div class="hero is-fullheight is-primary"> 
+<div class="hero is-fullheight" style="background-image: linear-gradient(to right, lightpink , yellow);"> 
 
 <%# ===================================================== %>
  <%# FEEDBACK MESSAGES I WANT TO PROVIDE TO MY USER %>
@@ -16,8 +16,12 @@
 
       <div class="column is-8 is-offset-2">
 
-        <h3 class="title">
-          LOG IN</h3>
+        <div class="title" style="letter-spacing: 15px; text-shadow: 1px 1px 3px green;">
+          <i class="fas fa-crown"></i>
+          <br>
+          LOG IN!
+        </div>
+
         <h4 class="subtitle">
         Enter your credentials here to sign into your account.</h4>
 
@@ -26,7 +30,7 @@
 
                 <div class="field is-horizontal">
                   <label class="field-label">
-                    USERNAME
+                    <strong>USERNAME</strong>
                   </label>
 
                   <div class="field-body">
@@ -45,7 +49,7 @@
 
                 <div class="field is-horizontal">
                   <label class="field-label">
-                    PASSWORD
+                    <strong>PASSWORD</strong>
                   </label>
 
                   <div class="field-body">
@@ -63,7 +67,7 @@
 
 
                 <div class="control">
-                  <input class="button is-primary is-light" type="submit" value="PRESS 2 SUBMIT">
+                  <input class="button is-primary is-primary" type="submit" value="PRESS 2 SUBMIT">
                 </div>
                 
                 
