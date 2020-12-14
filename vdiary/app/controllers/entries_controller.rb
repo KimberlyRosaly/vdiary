@@ -19,8 +19,19 @@ class EntriesController < ApplicationController
   # POST: /entries
   post "/entries" do
     @user = current_user
+    # ESTABLISH WHO OUR LOGGED IN USER IS
+    @user.entry_counter ||= 0
+    # IF their ENTRY_COUNTER DOESN'T ALREADY EXIST - SET ONE TO EQUAL 0
+
     @entry = Entry.create(params[:entry])
     @entry.user_id = @user.id
+
+    @user.entry_counter += 1
+    # COUNT THIS NEWLY CREATED ENTRY AGAINST THE USER'S TOTAL NUMBER OF THEM
+    @entry.number = @user.entry_counter
+    # THIS ENTRY IS SET TO KNOW ITS PLACE ALONG THE OTHERS via integer
+
+    @user.save
     @entry.save
     redirect to "/entries/#{@entry.id}"
   end
