@@ -1,6 +1,6 @@
-
 <% if @entries.length > 0 %>
     <% @entries.each do |e| %>
+<div class="box" style="margin: 20px;">
         <br>
         <%# CONVERT UTC 'COORDINATED UNIVERSAL TIME' TO COMPUTER's LOCAL TIME - FORMAT STRING %>
         <%= "DATE: #{e.created_at.localtime.strftime("%A, %B %e, %Y")}" %>
@@ -8,12 +8,12 @@
         <%= "MESSAGE: #{e.message}" %><br>
         <a href="/entries/<%=e.id%>/edit">edit</a>
         <br>
+</div>
     <% end %>
 <% else %>
-    <br>
-    
+    <br>    
     <%= "No saved entries found. ಥ﹏ಥ" %>
     <br>
     <a href="/entries/new">Create a new entry here</a>
 <% end %>
-
+</div>

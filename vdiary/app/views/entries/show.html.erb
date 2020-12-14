@@ -6,7 +6,7 @@
       </div>
   <% end %>
 <%# ===================================================== %>
-
+<div class="box" style="margin: 20px;">
 <%= "DIARY ENTRY NUMBER : #{@entry.id}" %><br>
 
 <%= "DATE: #{@entry.created_at.localtime.strftime("%A, %B %e, %Y")}" %><br>
@@ -24,3 +24,4 @@
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="DESTROY ENTRY">
 </form>
+</div>

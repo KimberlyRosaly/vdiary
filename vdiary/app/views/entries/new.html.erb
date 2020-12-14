@@ -1,9 +1,11 @@
+<div class="box" style="margin: 20px;">
 <%@d = Date.current%>
 <%=@d.strftime("%B %e, %Y")%>
 
 <form action="/entries" method="POST">
 
-    <textarea name="entry[message]" rows="2" cols="50" placeholder="dear diary..."></textarea>
+    <textarea class="box" name="entry[message]" rows="2" cols="40" placeholder="&#9998;..dear diary..."></textarea>
 
-    <input type="submit" value="save">
+    <input class="button box" type="submit" value="save">
 </form>
+</div>
