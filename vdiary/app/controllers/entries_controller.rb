@@ -40,8 +40,8 @@ class EntriesController < ApplicationController
   get "/entries/:id" do
     if logged_in?
       @user = current_user
-      @entry = Entry.find(params[:id].to_i)
-      if @entry.user == @user
+      if @entry = Entry.find_by_id(params[:id].to_i)
+        @entry.user == @user
         erb :"/entries/show.html"
       else
         redirect to "/portal"
